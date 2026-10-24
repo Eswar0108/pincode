@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0b0d12; display: flex; justify-content: center; align-items: center; height: 1080px; overflow: hidden; }
+  .scene { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 1080px; height: 1920px; padding: 60px; background: #0b0d12; color: #f0f6fc; }
+  .text-block { text-align: center; font-family: 'Inter', -apple-system, sans-serif; margin-bottom: 30px; }
+  .caption { font-size: 48px; font-weight: 700; line-height: 1.4; text-transform: uppercase; letter-spacing: 2px; }
+  .caption-line { display: block; margin-bottom: 10px; }
+  .caption-line:last-child { margin-bottom: 0; }
+  .glow { text-shadow: 0 0 40px rgba(57, 211, 83, 0.5); }
+  .github-glow { color: #58a6ff; text-shadow: 0 0 40px rgba(88, 166, 255, 0.5); }
+  @keyframes cameraPushIn { from { transform: scale(1.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes cameraPullOut { from { transform: scale(1); opacity: 1; } to { transform: scale(1.3); opacity: 0; } }
+  @keyframes brainPulse {
+    0% { opacity: 0.3; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.3; transform: scale(0.95); }
+  }
+  @keyframes rewind { from { transform: skewX(3deg) translateX(20px); } to { transform: skewX(0deg) translateX(0); } }
+  @keyframes fragmentsAssemble {
+    0% { transform: scale(2) rotate(20deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+  @keyframes morph {
+    0% { border-radius: 50%; }
+    50% { border-radius: 0; }
+    100% { border-radius: 50%; }
+  }
+  @keyframes splitScreen {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(30px); }
+  }
+  .presenter-closeup { animation: cameraPushIn 1.5s ease-out; }
+  .camera-pull-out { animation: cameraPullOut 1.5s ease-out; }
+  .brain-pulse { animation: brainPulse 3s ease-in-out infinite; }
+  .rewind { animation: rewind 0.8s ease-out; }
+  .fragments-assemble { animation: fragmentsAssemble 1.5s ease-out; }
+  .morph { animation: morph 2s ease-in-out infinite; }
+  .visual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .visual-grid div {
+    background: rgba(57, 211, 83, 0.15);
+    border: 1px solid rgba(57, 211, 83, 0.3);
+    border-radius: 8px; padding: 15px; text-align: center;
+  }
+  .visual-grid .icon { font-size: 24px; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+  <div class="scene presenter-closeup">
+    <div class="text-block glow">
+      <div class="caption">MEMORY IS NOT A RECORDING</div>
+    </div>
+  </div>
+</body>
+</html>

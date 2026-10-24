@@ -1,0 +1,18 @@
+{
+  "name": "listicle",
+  "source": "ai-video-factory",
+  "hook": "Trending: Rust off Rails: The opinionated web stack for the AI era",
+  "hookSubtitle": "Source: hacker-news \u00b7 Score: 129.5",
+  "items": [
+    {
+      "title": "Rust off Rails: The opinionated web stack for the AI era",
+      "meta": null,
+      "level": 4
+    }
+  ],
+  "cta": "Follow for more trending topics",
+  "durationInFrames": 450,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920
+}

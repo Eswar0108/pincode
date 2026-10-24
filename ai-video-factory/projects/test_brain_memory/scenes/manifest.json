@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "start": 0,
+    "duration": 3,
+    "end": 3,
+    "narration": "Your brain is editing your memories right now.",
+    "caption": "YOUR BRAIN IS EDITING\\nYOUR MEMORIES",
+    "visual": "presenter_closeup",
+    "animation": "camera_push_in",
+    "sfx": "impact"
+  },
+  {
+    "id": 2,
+    "start": 3,
+    "duration": 4,
+    "end": 7,
+    "narration": "And you probably don't even realize it's happening.",
+    "caption": "YOU DON'T EVEN\\nREALIZE IT",
+    "visual": "brain_animation",
+    "animation": "brain_pulse",
+    "sfx": "whoosh"
+  },
+  {
+    "id": 3,
+    "start": 7,
+    "duration": 5,
+    "end": 12,
+    "narration": "When you remember something, your brain doesn't simply replay a recording.",
+    "caption": "MEMORY IS NOT A RECORDING",
+    "visual": "memory_tape",
+    "animation": "rewind",
+    "sfx": "click"
+  },
+  {
+    "id": 4,
+    "start": 12,
+    "duration": 5,
+    "end": 17,
+    "narration": "It reconstructs the memory from pieces of information.",
+    "caption": "YOUR BRAIN RECONSTRUCTS IT",
+    "visual": "memory_fragments",
+    "animation": "fragments_assemble",
+    "sfx": "click"
+  },
+  {
+    "id": 5,
+    "start": 17,
+    "duration": 5,
+    "end": 22,
+    "narration": "That means every time you remember something, the memory can actually change.",
+    "caption": "EVERY RECALL CAN CHANGE IT",
+    "visual": "changing_memory",
+    "animation": "morph",
+    "sfx": "reveal"
+  },
+  {
+    "id": 6,
+    "start": 22,
+    "duration": 4,
+    "end": 26,
+    "narration": "That's one reason two people can remember the same event differently.",
+    "caption": "SAME EVENT. DIFFERENT MEMORY.",
+    "visual": "two_people",
+    "animation": "split_screen",
+    "sfx": "transition"
+  },
+  {
+    "id": 7,
+    "start": 26,
+    "duration": 4,
+    "end": 30,
+    "narration": "So your memories aren't perfect recordings. They're reconstructions.",
+    "caption": "YOUR MEMORIES ARE RECONSTRUCTIONS.",
+    "visual": "presenter",
+    "animation": "camera_pull_out",
+    "sfx": "reveal"
+  }
+]
