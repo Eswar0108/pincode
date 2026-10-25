@@ -8,9 +8,10 @@ from exceptions import (
 
 from models import PincodeRequest, LocationResponse, BulkRequest, BulkResponse
 
-from data import pincode_db  # Assume this is a dictionary mapping pincodes to location data
+from data import fetch_pincode_from_api, map_api_to_location_response
 
 app = FastAPI(
+    
     title="Pincode API",
     description="API for Pincode service for autofill city, state",
 )
@@ -41,12 +42,9 @@ async def get_location_by_pincode(pincode: str):
         raise InvalidPincodeFormatException(pincode, reason="Pincode must be a 6-digit number.")
 
    
-    if not location_data:
-        raise PincodeNotFoundException(pincode)
-
-    location_data = pincode_db.get(pincode)
-
-    return LocationResponse(**location_data)
+    # MAP: Transform API response to LocationResponse model
+    location = map_api_to_location_response(pincode, api_data)
+    return location
 
 
 
@@ -61,9 +59,13 @@ async def get_locations_by_bulk_pincode(request: BulkRequest):
         if not pincode.isdigit() or len(pincode) != 6:
             raise InvalidPincodeFormatException(pincode, reason="Pincode must be a 6-digit number.")
 
-        location_data = pincode_db.get(pincode)
-        if location_data:
-            found_results.append(LocationResponse(**location_data))
+        # Fetch from online API
+        api_data = fetch_pincode_from_api(pincode)
+
+        if api_data:
+            # MAP: Transform API data to LocationResponse
+            location = map_api_to_location_response(pincode, api_data)
+            found_results.append(location)
         else:
             missing_pincodes.append(pincode)
 

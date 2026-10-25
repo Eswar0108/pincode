@@ -1,56 +1,28 @@
-pincode_db ={
-    "110001": { 
-        "pincode": "110001",
-          "city": "New Delhi",
-          "state": "Delhi",
-          "district": "Central Delhi",
-        },
-    "560001": {
-        "pincode": "560001",
-        "city": "Bangalore",
-        "state": "Karnataka",
-        "district": "Bangalore Urban",
-    },
-    "400001": {
-        "pincode": "400001",
-        "city": "Mumbai",
-        "state": "Maharashtra",
-        "district": "Mumbai City", 
-    },
-    "700001": {
-        "pincode": "700001",
-        "city": "Kolkata",
-        "state": "West Bengal",
-        "district": "Kolkata",
-    },
-    "600001": {
-        "pincode": "600001",
-        "city": "Chennai",
-        "state": "Tamil Nadu",
-        "district": "Chennai",
-    },
-    "500001": {
-        "pincode": "500001",
-        "city": "Hyderabad",
-        "state": "Telangana",
-        "district": "Hyderabad",
-    },
-    "380001": {
-        "pincode": "380001",
-        "city": "Ahmedabad",
-        "state": "Gujarat",
-        "district": "Ahmedabad",
-    },
-    "200001": {
-        "pincode": "200001",
-        "city": "Lucknow",
-        "state": "Uttar Pradesh",
-        "district": "Lucknow",
-    },
-    "900001": {
-        "pincode": "900001",
-        "city": "Port Blair",
-        "state": "Andaman and Nicobar Islands",
-        "district": "South Andaman",
-    },
-}
+import requests
+from models import LocationResponse
+
+PINCODE_API_URL = "https://api.postalpincode.in/pincode/{pincode}"
+
+
+def fetch_pincode_from_api(pincode: str) -> dict | None:
+    """Fetch pincode data from India Post API."""
+    try:
+        response = requests.get(PINCODE_API_URL.format(pincode=pincode), timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            if data.get("Status") == "Success" and data.get("PostOffice"):
+                return data["PostOffice"][0]
+    except requests.RequestException:
+        pass
+    return None
+
+
+def map_api_to_location_response(pincode: str, api_data: dict) -> LocationResponse:
+    """Mapper: Transform India Post API response to LocationResponse model."""
+    post_office = api_data.get("PostOffice", [{}])[0]
+    return LocationResponse(
+        pincode=pincode,
+        district=post_office.get("District", "Unknown"),
+        city=post_office.get("Name", "Unknown"),
+        state=post_office.get("State", "Unknown")
+    )
